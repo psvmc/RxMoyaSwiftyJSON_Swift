@@ -8,7 +8,6 @@
 
 import UIKit
 import Moya
-import Moya_SwiftyJSONMapper
 import SwiftyJSON
 import RxSwift
 
@@ -29,16 +28,16 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func queryDataClick(sender: AnyObject) {
+    @IBAction func queryDataClick(_ sender: AnyObject) {
         
         _ = userProvider.request(ZJUserProvider.login(userName: "15225178360", userPwd: "123456"))
-            .mapObject(ZJResult<ZJUser>)
+            .mapObject(type: ZJResult<ZJUser>.self)
             .subscribe(
                 onNext:{
                     (repos) -> Void in
                     self.showTextView.text = "用SwiftyJSON把结果转为对象\n"
-                                           + "用户名：\(repos.obj!.userName)\n"
-                                           + "昵称：\(repos.obj!.userAlias)";
+                                            + "是否成功：\(repos.success!)\n"
+                                            + "信息：\(repos.msg!)";
                 },
                 onError:{
                     (error) -> Void in

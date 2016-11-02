@@ -1,6 +1,10 @@
-platform :ios, '8.0'
+platform :ios, '9.0'
 use_frameworks!
 
-pod 'Moya'
-pod 'Moya/RxSwift'
-pod "Moya-SwiftyJSONMapper/RxSwift"
+
+target 'RxMoyaSwiftyJSON_Swift' do
+	pod 'Alamofire', '~> 4.0'
+	pod 'Moya/RxSwift', :git => 'https://github.com/Moya/Moya'
+	pod 'Result', '~> 3.0.0'
+	pod 'SwiftyJSON', '~> 3.1.1'
+end

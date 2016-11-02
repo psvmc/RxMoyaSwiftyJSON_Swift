@@ -8,7 +8,6 @@
 
 import Foundation
 import SwiftyJSON
-import Moya_SwiftyJSONMapper
 
 class ZJUser: ALSwiftyJSONAble {
     var userName: String!

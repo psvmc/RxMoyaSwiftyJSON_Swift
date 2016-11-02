@@ -13,31 +13,37 @@ public enum ZJUserProvider {
 }
 
 extension ZJUserProvider: TargetType {
+    public var task: Task {
+        return .request;
+    }
+
+
+
     // API地址
-    public var baseURL: NSURL { return NSURL(string: "http://t.yidaisong.com:90/")! }
+    public var baseURL: URL { return URL(string: "http://www.psvmc.cn/")! }
     /// 拼接请求字符串
     public var path: String {
         switch self {
         case .login:
-            return ("login!in.do")
+            return ("navi_list.json")
         }
     }
     /// 请求方法
     public var method: Moya.Method {
-        return .POST
+        return .get
     }
     /// 配置参数
-    public var parameters: [String: AnyObject]? {
+    public var parameters: [String: Any]? {
         switch self {
             case .login(let userName, let userPwd):
-                return ["userPhone":userName,"userLoginPswd":userPwd];
+                return ["userPhone":userName as AnyObject,"userLoginPswd":userPwd as AnyObject];
         }
     }
     /// 数据
-    public var sampleData: NSData {
+    public var sampleData: Data {
         switch self {
         case .login:
-            return "Half measures are as bad as nothing at all.".dataUsingEncoding(NSUTF8StringEncoding)!
+            return "Half measures are as bad as nothing at all.".data(using: String.Encoding.utf8)!
         }
     }
 }

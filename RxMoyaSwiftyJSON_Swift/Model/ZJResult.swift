@@ -8,7 +8,6 @@
 
 import Foundation
 import SwiftyJSON
-import Moya_SwiftyJSONMapper
 
 class ZJResult<T: ALSwiftyJSONAble>: ALSwiftyJSONAble {
     var success: String!
